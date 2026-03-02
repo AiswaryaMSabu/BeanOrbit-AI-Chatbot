@@ -1,0 +1,18 @@
+# Virtual Environment
+venv/
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Database files
+*.db
+
+# FAISS vector index (if created)
+app/rag/faiss_index/
+
+# OS files
+.DS_Store

@@ -1,0 +1,29 @@
+body {
+    font-family: Arial;
+    background: #f4f6f9;
+    margin: 0;
+}
+header {
+    background: #002244;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+nav {
+    background: #0055a5;
+    padding: 10px;
+    text-align: center;
+}
+nav a {
+    color: white;
+    margin: 10px;
+}
+#chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: white;
+    width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+}

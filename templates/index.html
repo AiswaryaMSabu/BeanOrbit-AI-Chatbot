@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BeanOrbit International Public School</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+    <h1>BeanOrbit International Public School</h1>
+    <p>Innovating Education with AI & Excellence</p>
+</header>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/services">Services</a>
+    <a href="/faq">FAQ</a>
+    <a href="/contact">Contact</a>
+</nav>
+
+<section>
+    <h2>Welcome</h2>
+    <p>
+        BeanOrbit International Public School is a CBSE-affiliated institution
+        offering future-ready education from Kindergarten to Grade 12.
+    </p>
+</section>
+
+<div id="chatbot">
+    <div id="chat-window"></div>
+    <input type="text" id="user-input" placeholder="Ask something...">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+async function sendMessage(){
+    let input = document.getElementById("user-input");
+    let message = input.value.trim();
+
+    if(!message) return;
+
+    let response = await fetch("/chat", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({message: message})
+    });
+
+    let data = await response.json();
+
+    document.getElementById("chat-window").innerHTML +=
+        "<p><b>You:</b> "+message+"</p>" +
+        "<p><b>Bot:</b> "+data.response+"</p>";
+
+    input.value = "";
+}
+
+//  ADD THIS PART
+document.getElementById("user-input").addEventListener("keydown", function(event){
+    if(event.key === "Enter"){
+        event.preventDefault();  // stop page reload
+        sendMessage();
+    }
+});
+</script>
+</body>
+</html>
